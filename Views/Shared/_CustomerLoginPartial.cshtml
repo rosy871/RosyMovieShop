@@ -1,0 +1,24 @@
+﻿@model RosyMovieShop.Models.Db.Customer
+
+<div class="glass2 mt-5">
+
+	<form asp-action="LoginCustomer" asp-controller="Customer" id="loginForm" method="post">
+
+		<div class="row pb-3">
+
+			<div class="col-sm-8 pt-2">
+				<input asp-for="Email" placeholder="Enter your Email address" id="email" style="width:95%" required />
+							<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+			<div class="col-sm-4 mt-1">
+				<button type="submit" class="btn btn-primary btn-block" id="loginbtn" disabled> Login </button>
+			</div>
+		</div>
+
+
+
+
+	</form>
+
+</div>
+<script src="~/js/validations.js"></script>

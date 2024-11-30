@@ -1,0 +1,11 @@
+﻿@model RosyMovieShop.Models.Db.Customer
+
+@{
+    ViewData["Title"] = "Registration";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="container mt-5 ">
+    <h1 class="text-center mb-4 customer-reg">Customer Registration</h1>
+
+    @await Html.PartialAsync("_CustomerRegisterPartial")

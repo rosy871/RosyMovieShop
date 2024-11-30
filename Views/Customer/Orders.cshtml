@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RosyMovieShop.Models.ViewModels.CustomerOrderViewModel>
+
+@{
+    ViewData["Title"] = "Customer Orders";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <p class="text-center">Total Orders: <strong>@Model.Count()</strong></p>
+
+    @if ((TempData["Message"])!=null)
+    {
+        <div class="alert alert-warning text-center">
+            @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card border-success mb-3" style="border-radius: 7px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title">Order #@item.OrderId</h5>
+                        <p class="mb-0">Order Date: @item.OrderDate.ToString("MMMM dd, yyyy")</p>
+                        <p class="mb-0">Total Cost: <strong>@item.TotalCost.ToString() SEK</strong></p>
+                    </div>
+                    <div class="card-body overflow-y-auto">
+                        <h6 class="card-subtitle mb-2 text-muted">Movies in this order:</h6>
+                        <ul class="list-group">
+                            @foreach (var movie in item.Movies)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>@movie.Movie.Title</strong> - @movie.Movie.ReleaseYear
+                                        <p class="mb-0">Director: @movie.Movie.Director</p>
+                                    </div>
+                                    <span class="badge bg-secondary">@movie.Movie.Price SEK X @movie.NumberofCopies</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-controller="Customer" asp-action="Index" class="btn-lg btn btn-primary">Home</a>
+    </div>
+</div>

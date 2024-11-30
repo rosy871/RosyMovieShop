@@ -1,0 +1,104 @@
+﻿@model RosyMovieShop.Models.Db.Customer
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div class="row justify-content-center glass2">
+	<div class="col-md-8">
+		<form asp-action="CreateCustomer" asp-controller="Customer" method="post" id="registerForm">
+
+
+			<div class="row mb-3">
+				<div class="col-md-6 ">
+
+					<label asp-for="FristName" class="form-label ">First Name</label>
+					<input asp-for="FristName" class="form-control" placeholder="Enter your first name" required />
+					<span asp-validation-for="FristName" class="text-danger"></span>
+				</div>
+				<div class="col-md-6">
+					<label asp-for="LastName" class="form-label">Last Name</label>
+					<input asp-for="LastName" class="form-control" placeholder="Enter your last name" required />
+					<span asp-validation-for="LastName" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label asp-for="Email" class="form-label ">Email</label>
+					<input asp-for="Email" type=" email" id="rEmail" class="form-control" placeholder="Enter your email" required />
+					<span asp-validation-for="Email" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label asp-for="PhoneNo" class="form-label">Phone Number</label>
+					<input asp-for="PhoneNo" type="tel" class="form-control" placeholder="Enter your phone number" required />
+					<span asp-validation-for="PhoneNo" class="text-danger"></span>
+				</div>
+			</div>
+
+			<h5 class="mb-3">Billing information</h5>
+			<div class="row mb-3">
+
+				<div class="col-md-8">
+					<label asp-for="BillingAddress " class="form-label">Address</label>
+					<input asp-for="BillingAddress " class="form-control " placeholder="Enter your billing address" required />
+					<span asp-validation-for="BillingAddress" class="text-danger"></span>
+				</div>
+				<div class="col-md-4">
+					<label asp-for="BillingZip" class="form-label">Zip Code</label>
+					<input asp-for="BillingZip" class="form-control" placeholder="Enter billing zip code" required />
+					<span asp-validation-for="BillingZip" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label asp-for="BillingCity" class="form-label">City</label>
+					<input asp-for="BillingCity" class="form-control" placeholder="Enter billing city" required />
+					<span asp-validation-for="BillingCity" class="text-danger"></span>
+				</div>
+			</div>
+			<div>
+				Delivery Address Same as Billing Address &emsp;&emsp;&emsp;
+				<input type="radio" name="SameAddress" value="yes">
+				<label for="yes">YES</label> &emsp;&emsp;
+				<input type="radio" name="SameAddress" value="no">
+				<label for="no">NO</label><br>
+
+			</div>
+
+			<h5 class="mb-3">Delivery information</h5>
+			<div class="row mb-3">
+				<div class="col-md-8">
+					<label asp-for="DeliveryAddress" class="form-label">Address</label>
+					<input asp-for="DeliveryAddress" class="form-control" placeholder="Enter delivery address" required />
+					<span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+				</div>
+				<div class="col-md-4">
+					<label asp-for="DeliveryZip" class="form-label">Zip Code</label>
+					<input asp-for="DeliveryZip" class="form-control" placeholder="Enter delivery zip code" required />
+					<span asp-validation-for="DeliveryZip" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label asp-for="DeliveryCity" class="form-label">City</label>
+					<input asp-for="DeliveryCity" class="form-control" placeholder="Enter delivery city" required />
+					<span asp-validation-for="DeliveryCity" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="d-grid">
+				<button type="submit" class="btn btn-primary btn-block" id="regBtn" disabled>Register</button>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+
+<script src="~/js/validations.js"></script>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial " />
+}

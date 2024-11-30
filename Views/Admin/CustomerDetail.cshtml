@@ -1,0 +1,26 @@
+﻿@model RosyMovieShop.Models.Db.Customer
+@using RosyMovieShop.Helper;
+
+@{
+    ViewData["Title"] = "Customer Detail";
+    @UserRole.URole;
+
+}
+<h1>
+    @UserRole.URole;
+</h1>
+
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+    <div class="card border-3 border-danger" style="border-radius:7px; width: 80%;">
+        <div class="card-header bg-dark text-white text-center">
+            <h3 class="card-title">@Model.FristName @Model.LastName Details</h3>
+        </div>
+        <div class="card-body bg-light text-center text-dark h-100 m-auto">
+            <div class="mt-3 d-flex justify-content-center">
+                @Html.Partial("_CustomerDetailPartial")
+            </div>           
+          
+        </div>
+    </div>
+</div>
+

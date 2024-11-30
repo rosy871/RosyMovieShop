@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+@{
+	ViewData["Title"] = "cart detail";
+	Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+
+@model RosyMovieShop.Models.ViewModels.CartViewModel
+
+@{
+	Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+@{
+	//int cusid = (int)HttpContextAccessor.HttpContext.Session.GetInt32("SessionCusId");
+
+	if (HttpContextAccessor.HttpContext.Session.GetString("SessionCartList") == null)
+	{ }
+	else
+	{
+		double total = 0;
+		<div class="mainclass">
+			@foreach (var item in Model.ListMovie)
+			{
+				total += item.Movie.Price * item.NumberofCopies;
+				<partial name="_OrderPartial" model="item" />
+
+
+
+			}
+
+			<div class="text-end p-4" id="totaldiv">
+				<h5> Total Cost: <span id="totalcost"> @total</span></h5>
+			</div>
+			<div class="mt-2 pe-2 pt-2">
+
+				@if (HttpContextAccessor.HttpContext.Session.GetString("SessionCustomerName") == null)
+				{
+
+					<button class="btn btn-outline-light mt-2 py-2 text-primary " onclick="DisplayLoginPartial()">Already Member</button>
+					<button class="btn btn-outline-light mt-2 py-2 text-primary" onclick="DisplayRegisterPartial()">New Member</button>
+					TempData["formCart"] = "true";
+
+				}
+				else
+				{
+					<button class="btn btn-outline-info mt-2 py-2 " onclick="CheckOutFromCart()">Check Out</button>
+
+
+				}
+
+
+
+			</div>
+		</div>
+
+
+		<div id="displayLogReg" class="mt-2">
+		</div>
+	}
+
+
+
+}

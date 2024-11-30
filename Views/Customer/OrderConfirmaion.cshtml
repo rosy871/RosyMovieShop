@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@model RosyMovieShop.Models.ViewModels.CartViewModel
+
+@{
+    ViewData["Title"] = "OrderConfirmaion";
+	Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+
+}
+
+
+<div class="mainclass glass2 bg-secondary-subtle">
+	<div class="h4 mt-2 bg-info-subtle py-3" style="height:30px;width:100%;">Order Confirmaion</div>
+
+	@{
+		int? cusid = HttpContextAccessor.HttpContext.Session.GetInt32("SessionCusId");
+
+		if (HttpContextAccessor.HttpContext.Session.GetString("SessionCartList") == null)
+		{ }
+		else
+		{
+			double total = 0;
+			foreach (var item in Model.ListMovie)
+			{
+				total += item.Movie.Price * item.NumberofCopies;
+				<div class="row mt-2 ">
+					@{
+						double tot = item.Movie.Price * item.NumberofCopies;
+
+						<div class="row indorderdiv">
+							<div class="col-3 imgContainer">
+								<img src="@item.Movie.MovieUrl" alt="@item.Movie.Title" class="responsiveImg" />
+							</div>
+							<div class="col-9">
+								<div class="row">
+									<div class="col-sm-5 h6">
+										@item.Movie.Title
+									</div>
+
+									<div id="movprice_@item.Movie.Id" class="col-sm-3">
+										@item.Movie.Price SEK X @item.NumberofCopies
+									</div>
+
+
+									<div class="col-sm-3">
+										Sub total:@tot SEK
+									</div>
+
+								</div>
+
+							</div>
+
+
+							<hr />
+
+						</div>
+
+					}
+
+				</div>
+
+			}
+
+			<div class="bg-body-secondary text-end p-4 bg-secondary" id="totaldiv">
+				<h5> Total Cost: <span id="totalcost"> @total</span></h5>
+			</div>
+
+			<br />
+
+
+		}
+
+
+
+	}
+
+</div>

@@ -1,0 +1,38 @@
+﻿@model RosyMovieShop.Models.Db.Movie
+
+@using RosyMovieShop.Helper
+
+
+
+ <div class="card h-100 my-2" >
+    <img src="@Model.MovieUrl" class="card-img-top img-fluid" alt="...">
+    <div class="card-body text-dark p-3">
+
+        <div class="card-text text-start">
+            <div class="m-auto">
+                <p>
+                    <a class="link-offset-2-hover link-underline link-underline-opacity-0 fw-bold" href="@Url.Action("MovieDetails", "Customer", new { id = Model.Id })">@Model.Title</a>
+                </p>
+                <p>
+                    Director : @Model.Director
+                </p>
+                <p>
+                    Release Year : @Model.ReleaseYear
+                </p>
+                <p>
+                    Price : @Model.Price SEK
+                </p>                                                                         
+                                  
+            </div>
+
+        </div>
+
+    </div>
+    @if (  UserRole.URole == Role.Customer) { 
+
+    <div class="card-footer">
+        <button class="btn btn-success mt-1" onclick="addtoCartO(@Model.Id)">Add to cart</button>
+    </div>
+    }
+</div>
+         

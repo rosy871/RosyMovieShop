@@ -1,0 +1,47 @@
+﻿@model RosyMovieShop.Models.Db.Customer
+
+<div class=" text-center border rounded p-4 bg-primary-subtle">
+    <h4>@Model.FristName @Model.LastName Details</h4>
+    <hr />
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">First Name </div>
+        <div class="col-md-6">@Model.FristName</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Last Name </div>
+        <div class="col-md-6">@Model.LastName</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Email </div>
+        <div class="col-md-6">@Model.Email</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Billing Address </div>
+        <div class="col-md-6">@Model.BillingAddress</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Billing City </div>
+        <div class="col-md-6">@Model.BillingCity</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Billing Zip </div>
+        <div class="col-md-6">@Model.BillingZip</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Delivery Address </div>
+        <div class="col-md-6">@Model.DeliveryAddress</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Delivery City </div>
+        <div class="col-md-6">@Model.DeliveryCity</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Delivery Zip </div>
+        <div class="col-md-6">@Model.DeliveryZip</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6 font-weight-bold">Phone Number :</div>
+        <div class="col-md-6">@Model.PhoneNo</div>
+    </div>
+</div>
+

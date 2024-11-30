@@ -1,0 +1,31 @@
+﻿@model RosyMovieShop.Models.Db.Movie
+@using RosyMovieShop.Helper
+
+
+@{
+    ViewData["Title"] = "DeleteMovie";
+   // UserRole.URole = Role.Admin;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+    <div class="card border-3 border-danger" style="border-radius:7px; width: 40rem;">
+        <div class="card-header bg-dark text-white text-center">
+            <h3 class="card-title">Delete Movie</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        @Html.Partial("_MovieCardPartial")
+
+    </div>
+
+    <div class=" card card-footer alert alert-warning mt-3" role="alert">
+        <strong>Warning:</strong> This action cannot be undone.
+    </div>
+    <form asp-action="DeleteMovieConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger mr-2">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

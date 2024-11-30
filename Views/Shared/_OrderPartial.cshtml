@@ -1,0 +1,42 @@
+﻿@model RosyMovieShop.Models.ViewModels.IndividualCartOrderViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+	double tot = Model.Movie.Price * Model.NumberofCopies;
+
+	<div id="mov_@Model.Movie.Id" class="mt-1 indorderdiv colordiv">
+		<div class="row border-2 border-danger ps-2 pe-2">
+			<div class="col-3 imgContainer">
+				<img src="@Model.Movie.MovieUrl" alt="@Model.Movie.Title" class="responsiveImg" />
+			</div>
+
+			<div class="col-8">
+				<div class="row">
+					<div class="col-sm-5">
+						<h5>@Model.Movie.Title</h5>
+					</div>
+
+					<div id="movprice_@Model.Movie.Id" class="col-sm-2">
+						@Model.Movie.Price SEK
+					</div>
+
+
+					<div class="col-sm-2">
+						Sub total:<span id="total_@Model.Movie.Id">@tot</span> SEK
+					</div>
+					<div class="col-sm-3">
+						<button onclick="minusval1('@Model.Movie.Id','movieNum_@Model.Movie.Id','total_@Model.Movie.Id','mov_@Model.Movie.Id') " style="color:red">-</button>
+						<input value="@Model.NumberofCopies" id="movieNum_@Model.Movie.Id" style="width:40px" />
+						<button onclick="plusval1('@Model.Movie.Id','movieNum_@Model.Movie.Id','total_@Model.Movie.Id') " style="color:red">+</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-1">
+				<button onclick="removediv('@Model.Movie.Id','mov_@Model.Movie.Id')" style="border:none"><i class="bi bi-x-circle"></i></button>
+			</div>
+		</div>
+	</div>
+}

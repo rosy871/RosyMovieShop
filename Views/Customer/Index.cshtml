@@ -1,0 +1,153 @@
+﻿@model RosyMovieShop.Models.ViewModels.CustomerIndexViewModel
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+<div class="container-fluid text-center mt-2 mb-3">
+	@{
+		if (TempData["Message"] != null)
+		{
+			<span class="vbmsg"> @TempData["Message"]  </span>
+
+			TempData.Clear();
+		}
+	}
+	<div>
+		<div class="glass" style="width:100%">
+
+			<h2 class="mb-4">Top Picks</h2>
+		</div>
+
+		<div class="container">
+			<div id="popularMoviesCarousel" class="carousel slide" data-bs-ride="carousel">
+
+				<div class="carousel-indicators">
+					@for (int i = 0; i < Model.MostPopularMovie.Count; i++)
+					{
+						<button type="button" data-bs-target="#popularMoviesCarousel" data-bs-slide-to="@i"
+								class="@(i == 0 ? "active" : "")"
+								aria-current="@(i == 0 ? "true" : "false")"
+								aria-label="Slide @(i + 1)"></button>
+					}
+				</div>
+
+				<div class="carousel-inner">
+					@for (int i = 0; i < Model.MostPopularMovie.Count; i++)
+					{
+						var movie = Model.MostPopularMovie[i];
+						<div class="carousel-item @(i == 0 ? "active" : "")">
+							<div class="position-relative" style="height: 600px;">
+
+								<img src="@movie.MovieUrl" class="d-block w-100 h-100" alt="@movie.Title"
+									 style="object-fit:cover, fill;">
+
+								<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+									<h5 class="text-white">@movie.Title</h5>
+									<p class="text-white-50"><strong>Director:</strong> @movie.Director</p>
+									<p class="text-white-50"><strong>Released:</strong> @movie.ReleaseYear</p>
+									<p class="text-white-50"><strong>Price:</strong> @movie.Price SEK</p>
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#popularMoviesCarousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#popularMoviesCarousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="glass" style="width:100%">
+			<h2>New Movies</h2>
+		</div>
+
+		@foreach (var movie in Model.Top5NewestMovies)
+		{
+			<div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 me-4">
+
+				<partial name="_MovieCardPartial" model="movie"></partial>
+
+			</div>
+
+		}
+
+
+	</div>
+
+	<div class="row mt-5">
+
+		<div class="glass" style="width:100%">
+			<h2>Old Movies</h2>
+		</div>
+
+
+		@foreach (var movie in Model.Top5OldestMovies)
+		{
+			<div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 me-4">
+
+				<partial name="_MovieCardPartial" model="movie"></partial>
+
+			</div>
+
+		}
+
+	</div>
+
+	<div class="row mt-5">
+		<div class="glass" style="width:100%">
+			<h2>Low-Price Movies</h2>
+		</div>
+
+
+		@foreach (var movie in Model.Top5CheapestMovies)
+		{
+			<div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 me-4">
+
+				<partial name="_MovieCardPartial" model="movie"></partial>
+
+			</div>
+
+		}
+
+	</div>
+
+	<div class="glass2 mt-3" style="width:100%">
+		@{
+			string name = $" {Model.CustomerSpentMostMoney.FristName} {Model.CustomerSpentMostMoney.LastName} ";
+			<div class="row mt-5 w-100 float-center">
+				<div>
+					<img src="https://i.pinimg.com/originals/ab/64/35/ab6435e58230af747beaee7778244f71.gif" alt="Alternate Text" style="width:30%"/>
+				</div>
+				<h2 class="text-danger">Best Customer </h2>
+				@* <img src="#" alt="Alternate Text" /> *@
+				<p >
+					@if (Model.CustomerSpentMostMoney != null)
+					{
+						<h5 class="text-warning">
+							&#9734;&#9734; @name.ToUpper() &#9734;&#9734;
+						</h5>
+
+
+					}
+				</p>
+			</div>
+
+		}
+	</div>
+
+
+</div>
+
+

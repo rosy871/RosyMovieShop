@@ -1,0 +1,26 @@
+﻿@model RosyMovieShop.Models.ViewModels.AdminIndexMovieCusomerList
+@using RosyMovieShop.Helper;
+
+@{
+	ViewData["Title"] = "EditMovie";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>
+	@UserRole.URole
+</h1>
+
+<div class="mt-5 text-center">
+	@{
+		if (TempData["Message"] != null)
+		{
+			<span class="vbmsg"> @TempData["Message"]  </span>
+
+			TempData.Clear();
+		}
+	}
+	<partial name="_MovieList4AdminPartial" model="@Model.Movies"></partial>
+</div>
+<div class="mt-5 text-center">
+	<partial name="_CustomerList4AdminPartial" model="@Model.Customers"></partial>
+</div>
