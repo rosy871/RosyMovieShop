@@ -7,4 +7,7 @@ Used services as interface between db and controller .
 Used Linq queries.  
 Backend- C#, Linq.  
 Front-End- Html, Bootstrap, Javascript.  
+<br> <br>
+Description:<br>
+This webshop has two section one for Customer where he/ she can order movies and Admin section where movies as added, edited or orders are cancelled
 
