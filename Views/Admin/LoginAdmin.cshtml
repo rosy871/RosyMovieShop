@@ -1,0 +1,35 @@
+﻿@model RosyMovieShop.Models.ViewModels.Adminlogin
+@{
+    ViewData["Title"] = "Login Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="container glass2 mt-5 ms-5">
+
+	<form asp-action="LoginAdmin" asp-controller="Admin" id="loginForm1" method="post">
+		<span class="text-danger">@TempData["ErrorMsg"] </span>
+
+			<div class="pt-2">
+				<input asp-for="Username" placeholder="Enter your User Name" id="username" style="width:95%" required />
+				<span asp-validation-for="Username" class="text-danger"></span>
+			</div>
+
+			<div class="pt-2">
+				<input asp-for="Password"type="password" placeholder="Enter your Password" id="Password" style="width:95%" required />
+				<span asp-validation-for="Password" class="text-danger"></span>
+			</div>
+
+			<div class="mt-1">
+				<button type="submit" class="btn btn-primary btn-block" id="loginbtnAdmin"> Login </button>
+			</div>
+		
+
+
+
+
+	</form>
+
+</div>
+
+

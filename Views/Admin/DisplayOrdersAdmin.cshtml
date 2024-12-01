@@ -1,0 +1,105 @@
+﻿@model IEnumerable<RosyMovieShop.Models.ViewModels.AdminOrderViewModel>
+
+@{
+	ViewData["Title"] = "All Orders with Customer";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+
+<div class="container-fluid">
+
+	<div class="row glass">
+		<div class="col-sm-6">
+			<h4>Customers Orders</h4>
+
+		</div>
+		<div class="col-sm-6">
+			@{
+				if (TempData["Message"] != null)
+				{
+					<span class="vbmsg"> @TempData["Message"]  </span>
+
+					TempData.Clear();
+				}
+			}
+		</div>
+
+	</div>
+</div>
+
+
+
+<div class="container">
+	@{
+
+
+		foreach (var item in Model)
+
+		{
+
+			double total = 0; double subtotl;
+			<div>
+				<div class="row bg-primary-subtle py-2 ">
+					<div class="col-sm-5">
+						Order_@item.OrderId<br />
+						Order Date:	@item.OrderDate
+					</div>
+					<div class="col-sm-4 ps-2">
+						<div class=" h6">
+							Customer: <a asp-action="CustomerDetail" asp-route-id="@item.CustomerId" asp-controller="Admin">@item.OrderByCus	</a>
+						</div>
+						<div>Delivery Add: @item.DeliveryAddress	</div>
+					</div>
+					<div class="col-sm-2 border-start border-warning align-content-center">
+						<button class="arrowBtn btn btn-outline-info" onclick="showHideOrderlist('showorder_@item.OrderId')"> <span class="arrowIcon fs-3">&#x21f3;</span> </button> &ensp;
+
+						<a class="btn btn-outline-danger" asp-action="DeleteOrder" asp-route-id="@item.OrderId" asp-controller="Admin">
+							<i class="bi bi-trash3-fill"></i>
+						</a>
+					</div>
+
+				</div>
+
+				<div id="showorder_@item.OrderId" style="display:none">
+
+					@foreach (var mov in item.InMvovList)
+					{
+						subtotl = @mov.Movie.Price * @mov.NumberofCopies;
+						total += subtotl;
+
+						<div class="row bg-light py-3">
+							<div class="col-3">
+								<img src="@mov.Movie.MovieUrl" style="height:120px; width:120px" alt="@mov.Movie.Title" />
+							</div>
+							<div class="col-9 ps-3">
+								<div class="row">
+									<div class="col-sm-6">
+										@mov.Movie.Title
+									</div>
+									<div class="col-sm-6">
+										@mov.Movie.Price SEK x @mov.NumberofCopies SEK = @subtotl SEK
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					}
+					<div class="row mb-2 py-3 pe-4 bg-success-subtle align-content-end justify-content-end text-success">Total: @total</div>
+
+
+				</div>
+
+
+			</div>
+		}
+	}
+
+
+
+
+
+
+</div>
+

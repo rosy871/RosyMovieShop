@@ -2,15 +2,12 @@
 @using RosyMovieShop.Helper;
 
 @{
-	ViewData["Title"] = "EditMovie";
+	ViewData["Title"] = "Index Admin";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>
-	@UserRole.URole
-</h1>
 
-<div class="mt-5 text-center">
+<div class="mt-2 text-center">
 	@{
 		if (TempData["Message"] != null)
 		{

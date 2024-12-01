@@ -1,0 +1,68 @@
+﻿@model RosyMovieShop.Models.ViewModels.AdminOrderViewModel
+
+
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+	<div class="card border-3 border-danger h-100" style="border-radius:7px; width: 60rem;">
+		<div class="card-header bg-dark text-white text-center">
+			<h3 class="card-title">Delete Order</h3>
+		</div>
+		<div class="card-body text-center text-dark h-100 m-auto">
+			<h5>Are you sure you want to Delete this Order?</h5>
+			<div class="mt-3">
+				@{
+					double total = 0; double subtotl;
+					<div>
+						<div class="row bg-primary-subtle py-2 ">
+
+							Order_@Model.OrderId &emsp; &emsp; &emsp; &emsp;
+							Order Date:	@Model.OrderDate
+
+
+						</div>
+
+						<div id="showorder_@Model.OrderId">
+
+							@foreach (var mov in Model.InMvovList)
+							{
+								subtotl = @mov.Movie.Price * @mov.NumberofCopies;
+								total += subtotl;
+
+								<div class="row bg-light py-3">
+									<div class="col-3">
+										<img src="@mov.Movie.MovieUrl" style="height:120px; width:120px" alt="@mov.Movie.Title" />
+									</div>
+									<div class="col-9 ps-3">
+										<div class="row">
+											<div class="col-sm-6">
+												@mov.Movie.Title
+											</div>
+											<div class="col-sm-6">
+												@mov.Movie.Price SEK x @mov.NumberofCopies SEK = @subtotl SEK
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							}
+							<div class="row mb-2 py-3 pe-4 bg-success-subtle align-content-end justify-content-end text-success">Total: @total</div>
+
+
+						</div>
+
+
+					</div>
+				}
+			</div>
+			<div class="alert alert-warning mt-3" role="alert">
+				<strong>Warning:</strong> This action cannot be undone.
+			</div>
+
+		
+
+			<button onclick="cancelOrder(@Model.OrderId)" class="btn btn-danger mr-2">Delete</button>
+			<a asp-action="DisplayOrdersAdmin" asp-controller="Admin" class="btn btn-secondary">Cancel</a>
+			<
+		</div>
+	</div>
+</div>

@@ -5,60 +5,67 @@
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 }
-
-<div class="bg-info-subtle">
-	<h1 class="mt-5">CreateMovie</h1>
-	<h4>Movie</h4>
-	<hr />
+<div class="glass">
 	<div class="row">
-		<div class="col-md-4">
-			<form asp-action="CreateMovie">
-				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<div class="form-group">
-					<label asp-for="Title" class="control-label"></label>
-					<input asp-for="Title" class="form-control" />
-					<span asp-validation-for="Title" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label asp-for="Director" class="control-label"></label>
-					<input asp-for="Director" class="form-control" />
-					<span asp-validation-for="Director" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label asp-for="MovieUrl" class="control-label"></label>
-					<input asp-for="MovieUrl" class="form-control" />
-					<span asp-validation-for="MovieUrl" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label asp-for="ReleaseYear" class="control-label"></label>
-					<input asp-for="ReleaseYear" class="form-control" />
-					<span asp-validation-for="ReleaseYear" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label asp-for="Price" class="control-label"></label>
-					<input asp-for="Price" class="form-control" />
-					<span asp-validation-for="Price" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-					<label asp-for="Description" class="control-label"></label>
-					<textarea rows="2" cols="20" class="form-control" asp-for="Description" />
-					<span asp-validation-for="Description" class="text-danger"></span>
-				</div>
-
-				<div class="form-group">
-					<input type="submit" value="Create" class="btn btn-primary" />
-				</div>
-			</form>
+		<div class="col-6"><h5> Add Movies</h5> </div>
+		<div class="col-6">
+			<div>
+				<a asp-action="Index">Back to List</a>
+			</div>
 		</div>
+	
 	</div>
 
-	<div>
-		<a asp-action="Index">Back to List</a>
-	</div>
+</div>
 
-	@section Scripts {
+
+
+<div class="container">
+	<div class="row">
+		<form asp-action="CreateMovie">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Title" class="control-label"></label>
+				<input asp-for="Title" class="form-control" />
+				<span asp-validation-for="Title" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Director" class="control-label"></label>
+				<input asp-for="Director" class="form-control" />
+				<span asp-validation-for="Director" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="MovieUrl" class="control-label"></label>
+				<input asp-for="MovieUrl" class="form-control" />
+				<span asp-validation-for="MovieUrl" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ReleaseYear" class="control-label"></label>
+				<input asp-for="ReleaseYear" class="form-control" />
+				<span asp-validation-for="ReleaseYear" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Price" class="control-label"></label>
+				<input asp-for="Price" class="form-control" />
+				<span asp-validation-for="Price" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Description" class="control-label"></label>
+				<textarea rows="2" cols="20" class="form-control" asp-for="Description" ></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+@* 	@section Scripts {
 		@{
 			await Html.RenderPartialAsync("_ValidationScriptsPartial");
 		}
-	}
-</div>
+	} *@

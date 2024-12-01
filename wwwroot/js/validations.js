@@ -1,5 +1,39 @@
 ﻿$(document).ready(function () {
 
+    //$("#sameAddressCheckbox").on("change", function () {
+    //    if (this.checked) {
+    //        $("#deliveryAddress").val($("#billingAddress").val());
+    //        $("#deliveryZip").val($("#billingZip").val());
+    //        $("#deliveryCity").val($("#billingCity").val());
+    //    }
+    //    else {
+    //        $("#deliveryAddress").val("");
+    //        $("#deliveryZip").val("");
+    //        $("#deliveryCity").val("");
+    //    }
+    //});
+
+    $('#sameAddressCheckbox').on('change', function () {
+        var add = $('#billingAddress').val();
+        var zip = $("#billingZip").val();
+        var city = $("#billingCity").val();
+        console.log(add);
+        console.log(zip);
+        console.log(city);
+        if (this.checked) {
+            $('#deliveryAddress').val(add);
+            $("#deliveryZip").val(zip);
+            $("#deliveryCity").val(city);
+        }
+        else {
+            $("#deliveryAddress").val("");
+            $("#deliveryZip").val("");
+            $("#deliveryCity").val("");
+        }
+
+    });
+
+
     console.log("htis");
     console.log($('.vbmsg'));
     if ($('.vbmsg').length > 0) {
@@ -23,10 +57,10 @@
                     //    $('#email-error').text(response.message).show(); //using tooltip instead of span
                     $('#email').tooltip('dispose')
                         .attr('title', response.message)
-                        .tooltip('show')
-                        .css({ "background-color": "white", "color": "red" });
+                        .tooltip('show');
                     $('#loginbtn').prop('disabled', true)
-                } else {
+                }
+                else {
                     //    $('#email-error').hide();
                     $('#email').tooltip('dispose');
                     $('#loginbtn').prop('disabled', false)
@@ -56,8 +90,7 @@
                     //    $('#email-error').text(response.message).show(); //using tooltip instead of span
                     $('#rEmail').tooltip('dispose')
                         .attr('title', response.message)
-                        .tooltip('show')
-                        .css({ "background-color": "white", "color": "red" });
+                        .tooltip('show');
                     $('#regBtn').prop('disabled', true)
 
                 } else {

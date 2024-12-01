@@ -1,11 +1,9 @@
 ﻿@model RosyMovieShop.Models.Db.Customer
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 
 
 <div class="row justify-content-center glass2">
-	<div class="col-md-8">
+	<div class="col-md-8 text-light">
 		<form asp-action="CreateCustomer" asp-controller="Customer" method="post" id="registerForm">
 
 
@@ -43,28 +41,28 @@
 
 				<div class="col-md-8">
 					<label asp-for="BillingAddress " class="form-label">Address</label>
-					<input asp-for="BillingAddress " class="form-control " placeholder="Enter your billing address" required />
+					<input id="billingAddress" asp-for="BillingAddress " class="form-control " placeholder="Enter your billing address" required />
 					<span asp-validation-for="BillingAddress" class="text-danger"></span>
 				</div>
 				<div class="col-md-4">
 					<label asp-for="BillingZip" class="form-label">Zip Code</label>
-					<input asp-for="BillingZip" class="form-control" placeholder="Enter billing zip code" required />
+					<input id="billingZip" asp-for="BillingZip" class="form-control" placeholder="Enter billing zip code" required />
 					<span asp-validation-for="BillingZip" class="text-danger"></span>
 				</div>
 			</div>
 			<div class="row mb-3">
 				<div class="col-md-12">
 					<label asp-for="BillingCity" class="form-label">City</label>
-					<input asp-for="BillingCity" class="form-control" placeholder="Enter billing city" required />
+					<input id="billingCity" asp-for="BillingCity" class="form-control" placeholder="Enter billing city" required />
 					<span asp-validation-for="BillingCity" class="text-danger"></span>
 				</div>
 			</div>
 			<div>
-				Delivery Address Same as Billing Address &emsp;&emsp;&emsp;
-				<input type="radio" name="SameAddress" value="yes">
-				<label for="yes">YES</label> &emsp;&emsp;
-				<input type="radio" name="SameAddress" value="no">
-				<label for="no">NO</label><br>
+				<br />
+				<label class="form-check-label" for="sameAddressCheckbox"> Delivery Address Same as Billing Address
+					
+				</label>			
+				<input type="checkbox" class="form-check-input" id="sameAddressCheckbox"> 
 
 			</div>
 
@@ -72,19 +70,19 @@
 			<div class="row mb-3">
 				<div class="col-md-8">
 					<label asp-for="DeliveryAddress" class="form-label">Address</label>
-					<input asp-for="DeliveryAddress" class="form-control" placeholder="Enter delivery address" required />
+					<input id="deliveryAddress" asp-for="DeliveryAddress" class="form-control" placeholder="Enter delivery address" required />
 					<span asp-validation-for="DeliveryAddress" class="text-danger"></span>
 				</div>
 				<div class="col-md-4">
 					<label asp-for="DeliveryZip" class="form-label">Zip Code</label>
-					<input asp-for="DeliveryZip" class="form-control" placeholder="Enter delivery zip code" required />
+					<input id="deliveryZip" asp-for="DeliveryZip" class="form-control" placeholder="Enter delivery zip code" required />
 					<span asp-validation-for="DeliveryZip" class="text-danger"></span>
 				</div>
 			</div>
 			<div class="row mb-3">
 				<div class="col-md-12">
 					<label asp-for="DeliveryCity" class="form-label">City</label>
-					<input asp-for="DeliveryCity" class="form-control" placeholder="Enter delivery city" required />
+					<input id="deliveryCity" asp-for="DeliveryCity" class="form-control" placeholder="Enter delivery city" required />
 					<span asp-validation-for="DeliveryCity" class="text-danger"></span>
 				</div>
 			</div>

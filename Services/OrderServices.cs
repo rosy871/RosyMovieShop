@@ -2,6 +2,7 @@
 using RosyMovieShop.Data;
 using RosyMovieShop.Models.Db;
 using RosyMovieShop.Models.ViewModels;
+using System.Data;
 
 namespace RosyMovieShop.Services
 {
@@ -41,7 +42,8 @@ namespace RosyMovieShop.Services
 		public void DeleteOrder(int id)
 		{
 			var order = _db.Orders.Include(or => or.OrderRows).FirstOrDefault(o => o.Id == id);
-
+			
+			
 			_db.Orders.Remove(order);
 			_db.SaveChanges();
 

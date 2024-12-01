@@ -1,51 +1,68 @@
 ﻿@model IEnumerable<RosyMovieShop.Models.Db.Movie>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Director)
-            </th>
-          
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-           
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Director)
-            </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-           
-            <td>
-                <a asp-action="EditMovie" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="MovieDetails" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="DeleteMovie" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="glass">
+	<div class="row">
+		<div class="col-6"><h5> Active Movies Lists </h5> </div>
+		<div class="col-6">
+			<p>
+				<a asp-action="CreateMovie">Create New</a>
+			</p>
+		</div>
+	</div>
+	
+</div>
+<div class="container">
+	<table class="table table-hover table-responsive-sm">
+		<thead>
+			<tr class="table-dark">
+				<th>
+					@Html.DisplayNameFor(model => model.Title)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Director)
+				</th>
+
+				<th>
+					@Html.DisplayNameFor(model => model.ReleaseYear)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Price)
+				</th>
+
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Title)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Director)
+					</td>
+
+					<td>
+						@Html.DisplayFor(modelItem => item.ReleaseYear)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Price)
+					</td>
+
+					<td>
+						<a class="btn btn-outline-primary" asp-action="EditMovie" asp-route-id="@item.Id"> <i class="bi bi-pencil-square"></i></a> &emsp;
+						<a class="btn btn-outline-info" asp-action="MovieDetails" asp-controller="Admin" asp-route-id="@item.Id">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+								<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+								<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+							</svg>
+						</a> &emsp;
+						<a class="btn btn-outline-danger" asp-action="DeleteMovie" asp-route-id="@item.Id"> <i class="bi bi-trash3-fill"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

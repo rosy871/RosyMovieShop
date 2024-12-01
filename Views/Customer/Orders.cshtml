@@ -6,13 +6,16 @@
 }
 
 
-<div class="container mt-5">
+<div class="container mt-5 ">
+    <div class="glass">
     <p class="text-center">Total Orders: <strong>@Model.Count()</strong></p>
+
+    </div>
 
     @if ((TempData["Message"])!=null)
     {
         <div class="alert alert-warning text-center">
-            @ViewBag.Message
+            @TempData["Message"]
         </div>
     }
 

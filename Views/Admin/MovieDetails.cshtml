@@ -1,0 +1,51 @@
+﻿@model RosyMovieShop.Models.Db.Movie
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="glass">
+    <div class="row">
+        <div class="col-6"><h5> @Model.Title Detail</h5> </div>
+        <div class="col-6">
+            <p>
+                <a asp-action="Index">Go Back</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <div class="row glass2">
+        <div class="col-sm-6">
+
+            @Html.Partial("_MovieCardPartial");
+        </div>
+
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4>Genre</h4>
+                </div>
+                <div>
+                    @Model.genre
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4>Intro</h4>
+                </div>
+                <div>
+                    @Model.Description
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

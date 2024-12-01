@@ -52,6 +52,7 @@ namespace RosyMovieShop.Controllers
 			var movies = _ims.GetAllMovies().Where(m=>m.Active=true);
 			return View(movies);
 		}
+
 		public IActionResult MovieDetails(int id)
 		{
             if (id == 0)

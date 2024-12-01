@@ -1,17 +1,27 @@
 ﻿@model RosyMovieShop.Models.Db.Movie
 
 @{
-    ViewData["Title"] = "EditMovie";
+    ViewData["Title"] = "Edit Movie";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 }
 
-<h1>EditMovie</h1>
 
-<h4>Movie</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="glass">
+    <div class="row">
+        <div class="col-6"><h5> Update Movie</h5> </div>
+        <div class="col-6">
+            <p>
+                <a asp-action="Index">Back to List</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class=" container">
+    <div class="col-md-8">
         <form asp-action="EditMovie">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -48,9 +58,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
